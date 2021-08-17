@@ -2,11 +2,14 @@
   "c": {
     "sdk": {
       "dir": "~/couchbase/libcouchbase/",
-      "url": "https://github.com/couchbase/libcouchbase"
+      "url": "https://github.com/couchbase/libcouchbase",
+      "jira": "https://issues.couchbase.com/projects/CCBC"
     },
     "doc": {
       "dir": "~/couchbase/docs-sdk-c/",
-      "url": "https://github.com/couchbase/docs-sdk-c/"
+      "url": "https://github.com/couchbase/docs-sdk-c/",
+      "live": "https://docs.couchbase.com/c-sdk/current/hello-world/overview.html",
+      "stage": "https://docs-staging.couchbase.com/c-sdk/current/hello-world/overview.html"
     },
     "try": {
       "dir": "~/couchbase/try-cb-lcb/",
@@ -22,11 +25,14 @@
   "dotnet": {
     "sdk": {
       "dir": "~/couchbase/couchbase-net-client/",
-      "url": "https://github.com/couchbase/couchbase-net-client"
+      "url": "https://github.com/couchbase/couchbase-net-client",
+      "jira": "https://issues.couchbase.com/projects/NCBC"
     },
     "doc": {
       "dir": "~/couchbase/docs-sdk-dotnet/",
-      "url": "https://github.com/couchbase/docs-sdk-dotnet/"
+      "url": "https://github.com/couchbase/docs-sdk-dotnet/",
+      "live": "https://docs.couchbase.com/dotnet-sdk/current/hello-world/overview.html",
+      "stage": "https://docs-staging.couchbase.com/dotnet-sdk/current/hello-world/overview.html"
     },
     "try": {
       "dir": "~/couchbase/try-cb-dotnet/",
@@ -42,11 +48,14 @@
   "go": {
     "sdk": {
       "dir": "~/couchbase/gocb/",
-      "url": "https://github.com/couchbase/gocb"
+      "url": "https://github.com/couchbase/gocb",
+      "jira": "https://issues.couchbase.com/projects/GOCBC"
     },
     "doc": {
       "dir": "~/couchbase/docs-sdk-go/",
-      "url": "https://github.com/couchbase/docs-sdk-go/"
+      "url": "https://github.com/couchbase/docs-sdk-go/",
+      "live": "https://docs.couchbase.com/go-sdk/current/hello-world/overview.html",
+      "stage": "https://docs-staging.couchbase.com/go-sdk/current/hello-world/overview.html"
     },
     "try": {
       "dir": "~/couchbase/try-cb-golang/",
@@ -56,11 +65,14 @@
   "java": {
     "sdk": {
       "dir": "~/couchbase/couchbase-jvm-clients/java-client/",
-      "url": "https://github.com/couchbase/couchbase-jvm-clients/tree/master/java-client"
+      "url": "https://github.com/couchbase/couchbase-jvm-clients/tree/master/java-client",
+      "jira": "https://issues.couchbase.com/projects/JCBC"
     },
     "doc": {
       "dir": "~/couchbase/docs-sdk-java/",
-      "url": "https://github.com/couchbase/docs-sdk-java/"
+      "url": "https://github.com/couchbase/docs-sdk-java/",
+      "live": "https://docs.couchbase.com/java-sdk/current/hello-world/overview.html",
+      "stage": "https://docs-staging.couchbase.com/java-sdk/current/hello-world/overview.html"
     },
     "try": {
       "dir": "~/couchbase/try-cb-java/",
@@ -70,11 +82,14 @@
   "nodejs": {
     "sdk": {
       "dir": "~/couchbase/couchnode/",
-      "url": "https://github.com/couchbase/couchnode"
+      "url": "https://github.com/couchbase/couchnode",
+      "jira": "https://issues.couchbase.com/projects/JSCBC"
     },
     "doc": {
       "dir": "~/couchbase/docs-sdk-nodejs/",
-      "url": "https://github.com/couchbase/docs-sdk-nodejs"
+      "url": "https://github.com/couchbase/docs-sdk-nodejs",
+      "live": "https://docs.couchbase.com/nodejs-sdk/current/hello-world/overview.html",
+      "stage": "https://docs-staging.couchbase.com/nodejs-sdk/current/hello-world/overview.html"
     },
     "try": {
       "dir": "~/couchbase/try-cb-nodejs/",
@@ -84,11 +99,14 @@
   "python": {
     "sdk": {
       "dir": "~/couchbase/couchbase-python-client/",
-      "url": "https://github.com/couchbase/couchbase-python-client"
+      "url": "https://github.com/couchbase/couchbase-python-client",
+      "jira": "https://issues.couchbase.com/projects/PYCBC"
     },
     "doc": {
       "dir": "~/couchbase/docs-sdk-python/",
-      "url": "https://github.com/couchbase/docs-sdk-python/"
+      "url": "https://github.com/couchbase/docs-sdk-python/",
+      "live": "https://docs.couchbase.com/python-sdk/current/hello-world/overview.html",
+      "stage": "https://docs-staging.couchbase.com/python-sdk/current/hello-world/overview.html"
     },
     "try": {
       "dir": "~/couchbase/try-cb-python/",
@@ -98,11 +116,14 @@
   "php": {
     "sdk": {
       "dir": "~/couchbase/php-couchbase/",
-      "url": "https://github.com/couchbase/php-couchbase"
+      "url": "https://github.com/couchbase/php-couchbase",
+      "jira": "https://issues.couchbase.com/projects/PCBC"
     },
     "doc": {
       "dir": "~/couchbase/docs-sdk-php/",
-      "url": "https://github.com/couchbase/docs-sdk-php/"
+      "url": "https://github.com/couchbase/docs-sdk-php/",
+      "live": "https://docs.couchbase.com/php-sdk/current/hello-world/overview.html",
+      "stage": "https://docs-staging.couchbase.com/php-sdk/current/hello-world/overview.html"
     },
     "try": {
       "dir": "~/couchbase/try-cb-php/",
@@ -112,11 +133,14 @@
   "ruby": {
     "sdk": {
       "dir": "~/couchbase/couchbase-ruby-client/",
-      "url": "https://github.com/couchbase/couchbase-ruby-client"
+      "url": "https://github.com/couchbase/couchbase-ruby-client",
+      "jira": "https://issues.couchbase.com/projects/RCBC"
     },
     "doc": {
       "dir": "~/couchbase/docs-sdk-ruby/",
-      "url": "https://github.com/couchbase/docs-sdk-ruby/"
+      "url": "https://github.com/couchbase/docs-sdk-ruby/",
+      "live": "https://docs.couchbase.com/ruby-sdk/current/hello-world/overview.html",
+      "stage": "https://docs-staging.couchbase.com/ruby-sdk/current/hello-world/overview.html"
     },
     "try": {
       "dir": "~/couchbase/try-cb-ruby/",
@@ -132,11 +156,14 @@
   "scala": {
     "sdk": {
       "dir": "~/couchbase/couchbase-jvm-clients/scala-client/",
-      "url": "https://github.com/couchbase/couchbase-jvm-clients/tree/master/scala-client"
+      "url": "https://github.com/couchbase/couchbase-jvm-clients/tree/master/scala-client",
+      "jira": "https://issues.couchbase.com/projects/SCBC"
     },
     "doc": {
       "dir": "~/couchbase/docs-sdk-scala/",
-      "url": "https://github.com/couchbase/docs-sdk-scala/"
+      "url": "https://github.com/couchbase/docs-sdk-scala/",
+      "live": "https://docs.couchbase.com/scala-sdk/current/hello-world/overview.html",
+      "stage": "https://docs-staging.couchbase.com/scala-sdk/current/hello-world/overview.html"
     },
     "try": {
       "dir": "~/couchbase/try-cb-scala/",
