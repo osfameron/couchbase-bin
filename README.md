@@ -6,13 +6,14 @@ Switch between different projects, using a JSON configuration.
 
 Tested on Mac OSX.
 
-Install `jq`, clone the repo, source `va.sh` in your startup.
+Install `jq`, clone the repo, link va.json to your home directory, source `va.sh` in your startup.
 
 	brew install jq
 
 	# assuming you have your working directories in a `couchbase` directory
 	cd ~/couchbase
 	git clone git@github.com:osfameron/couchbase-bin.git
+	ln $HOME/couchbase/bin/va.json $HOME
 	echo '. $HOME/couchbase/bin/va.sh' >> ~/.zshrc
 
 	# now restart your shell
@@ -66,6 +67,9 @@ It helpfully uses `jq -e` to set exit value as appropriate.
 	  "stage": "https://docs-staging.couchbase.com/scala-sdk/current/hello-world/overview.html"
 	}
 
+You may have to quote your jq expression if it contains shell characters. Subsequent arguments are
+passed to `jq`. See the examples with `-r` later, to show raw data (not formatted as JSON.)
+
 `vap` is a wrapper around `vaq keys` to list all the available projects, for scripting.
 
 	❯ vap
@@ -82,6 +86,24 @@ It helpfully uses `jq -e` to set exit value as appropriate.
 	rust
 	scala
 
-For example, to clone all the sdk-doc projects in one command:
+You can also select just the projects that match a certain predicate.
+This uses `with_entries` to transform the json into a list of objects like
+`{key: ..., value: ...}`.
+
+For example, we could show just the projects where there is a `try` entry. 
+
+	vap 'select(.value.try)'
+
+### Examples 
+
+To clone all the sdk-doc projects in one command:
 
 	for PROJ in `vap`; do if GIT=$(vaq .$PROJ.doc.git -r); then git clone $GIT; fi; done
+
+Or if you prefer...:
+
+	for GIT in `vaq '.[] | .doc.git | select(strings)' -r`; do git clone $GIT; done
+
+Select just the projects that have an `sdk` entry
+
+	vaq 'with_entries(select(.value.sdk))'

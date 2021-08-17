@@ -67,4 +67,11 @@ va() {
   fi
 }
 
-alias vap="vaq 'keys |.[]' -r"
+vap() {
+  PRED=$1
+  if [[ ! -z "$PRED" ]]
+    then PRED="with_entries($PRED) |"
+  fi
+  vaq "$PRED keys |.[]" -r
+}
+
