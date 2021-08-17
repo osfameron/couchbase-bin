@@ -7,6 +7,7 @@
     },
     "doc": {
       "dir": "~/couchbase/docs-sdk-c/",
+      "git": "git@github.com:couchbase/docs-sdk-c.git",
       "url": "https://github.com/couchbase/docs-sdk-c/",
       "live": "https://docs.couchbase.com/c-sdk/current/hello-world/overview.html",
       "stage": "https://docs-staging.couchbase.com/c-sdk/current/hello-world/overview.html"
@@ -19,6 +20,7 @@
   "common": {
     "doc": {
       "dir": "~/couchbase/docs-sdk-common/",
+      "git": "git@github.com:couchbase/docs-sdk-common.git",
       "url": "https://github.com/couchbase/docs-sdk-common/"
     }
   },
@@ -30,6 +32,7 @@
     },
     "doc": {
       "dir": "~/couchbase/docs-sdk-dotnet/",
+      "git": "git@github.com:couchbase/docs-sdk-dotnet.git",
       "url": "https://github.com/couchbase/docs-sdk-dotnet/",
       "live": "https://docs.couchbase.com/dotnet-sdk/current/hello-world/overview.html",
       "stage": "https://docs-staging.couchbase.com/dotnet-sdk/current/hello-world/overview.html"
@@ -53,6 +56,7 @@
     },
     "doc": {
       "dir": "~/couchbase/docs-sdk-go/",
+      "git": "git@github.com:couchbase/docs-sdk-dotnet.git",
       "url": "https://github.com/couchbase/docs-sdk-go/",
       "live": "https://docs.couchbase.com/go-sdk/current/hello-world/overview.html",
       "stage": "https://docs-staging.couchbase.com/go-sdk/current/hello-world/overview.html"
@@ -70,6 +74,7 @@
     },
     "doc": {
       "dir": "~/couchbase/docs-sdk-java/",
+      "git": "git@github.com:couchbase/docs-sdk-java.git",
       "url": "https://github.com/couchbase/docs-sdk-java/",
       "live": "https://docs.couchbase.com/java-sdk/current/hello-world/overview.html",
       "stage": "https://docs-staging.couchbase.com/java-sdk/current/hello-world/overview.html"
@@ -87,6 +92,7 @@
     },
     "doc": {
       "dir": "~/couchbase/docs-sdk-nodejs/",
+      "git": "git@github.com:couchbase/docs-sdk-nodejs.git",
       "url": "https://github.com/couchbase/docs-sdk-nodejs",
       "live": "https://docs.couchbase.com/nodejs-sdk/current/hello-world/overview.html",
       "stage": "https://docs-staging.couchbase.com/nodejs-sdk/current/hello-world/overview.html"
@@ -104,6 +110,7 @@
     },
     "doc": {
       "dir": "~/couchbase/docs-sdk-python/",
+      "git": "git@github.com:couchbase/docs-sdk-python.git",
       "url": "https://github.com/couchbase/docs-sdk-python/",
       "live": "https://docs.couchbase.com/python-sdk/current/hello-world/overview.html",
       "stage": "https://docs-staging.couchbase.com/python-sdk/current/hello-world/overview.html"
@@ -121,6 +128,7 @@
     },
     "doc": {
       "dir": "~/couchbase/docs-sdk-php/",
+      "git": "git@github.com:couchbase/docs-sdk-php.git",
       "url": "https://github.com/couchbase/docs-sdk-php/",
       "live": "https://docs.couchbase.com/php-sdk/current/hello-world/overview.html",
       "stage": "https://docs-staging.couchbase.com/php-sdk/current/hello-world/overview.html"
@@ -138,6 +146,7 @@
     },
     "doc": {
       "dir": "~/couchbase/docs-sdk-ruby/",
+      "git": "git@github.com:couchbase/docs-sdk-ruby.git",
       "url": "https://github.com/couchbase/docs-sdk-ruby/",
       "live": "https://docs.couchbase.com/ruby-sdk/current/hello-world/overview.html",
       "stage": "https://docs-staging.couchbase.com/ruby-sdk/current/hello-world/overview.html"
@@ -161,6 +170,7 @@
     },
     "doc": {
       "dir": "~/couchbase/docs-sdk-scala/",
+      "git": "git@github.com:couchbase/docs-sdk-scala.git",
       "url": "https://github.com/couchbase/docs-sdk-scala/",
       "live": "https://docs.couchbase.com/scala-sdk/current/hello-world/overview.html",
       "stage": "https://docs-staging.couchbase.com/scala-sdk/current/hello-world/overview.html"

@@ -56,6 +56,7 @@ Install `jq`, clone the repo, source `va.sh` in your startup.
 	/Users/hakimcassimally/couchbase/couchbase-rs
 
 `vaq` lets you run an arbitrary jq query on the config file.
+It helpfully uses `jq -e` to set exit value as appropriate.
 
 	❯ vaq .scala.doc
 	{
@@ -80,3 +81,7 @@ Install `jq`, clone the repo, source `va.sh` in your startup.
 	ruby
 	rust
 	scala
+
+For example, to clone all the sdk-doc projects in one command:
+
+	for PROJ in `vap`; do if GIT=$(vaq .$PROJ.doc.git -r); then git clone $GIT; fi; done
