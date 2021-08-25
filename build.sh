@@ -38,8 +38,15 @@ antora --stacktrace $PLAYBOOK_MOD 2>&1 \
     | pv -s $PREV_SIZE \
     | grep --color=auto --file $PAT --fixed-strings \
 
-echo
-echo Open file:$(pwd)/public/${NAME} to view docs
+# Following requires `public` to be `git init`.
+# We don't need to save these, it just helps to do the diff of resulting output
 
+pushd public > /dev/null
+echo Following files were modified:
+git add .
+git diff --name-only --cached | xargs -L1 realpath
+git commit -q -m Updating
+
+popd > /dev/null
 popd > /dev/null
 popd > /dev/null
