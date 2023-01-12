@@ -1,0 +1,94 @@
+#!/bin/bash
+
+set -euo pipefail
+source _git_helpers.sh
+CMD="git fresh"
+
+usage() {
+cat <<USAGE
+Usage:
+  $CMD [-b=baseref] [-c=new-branch] [-u=upstream] [-o=origin-ref] [-O]
+  
+    -b=baseref
+      which base-ref to update.
+      Defaults to the default branch ref selected in Github
+      
+    -c=new-branch-name
+      the name of the new branch to create.
+      If not specified, will not create a new branch.
+      
+    -u=upstream
+      the reference for the upstream remote.
+      defaults to `upstream` if not provided.
+
+    -o=origin-ref
+      the reference for your origin remote.
+      If omitted, will not update the origin remote.
+      
+    -O
+      short for -o=origin
+
+WARNING:
+  This command will change your working copy!
+  
+  We try to be polite and `git stash`, but you should ensure that it's safe to run
+  in your working copy.
+
+Examples:
+
+  $CMD
+    Leaves you in an updated copy of the default upstream branch
+    
+  $CMD -b release/3.1 -c DOC-1234-port-to-3.1 -O
+    Updates release/3.1 and pushes to `origin` remote.
+    Then checks out the new named branch.
+USAGE
+exit 0
+}
+
+BASEREF=$(git-default-branch-ref)
+NEWBRANCH=
+UPSTREAM=upstream
+ORIGIN=
+
+while getopts 'b:c:u:o:Oh' opt; do
+  case "$opt" in
+    b)
+      BASEREF=$OPTARG
+      ;;
+    c)
+      NEWBRANCH=$OPTARG
+      ;;
+    o)
+      ORIGIN=$OPTARG
+      ;;
+    O)
+      ORIGIN=origin
+      ;;
+    u)
+      UPSTREAM=$OPTARG
+      ;;
+    ?|h)
+      usage
+      ;;
+  esac
+done
+shift "$(($OPTIND -1))"
+
+# stash, just in case anything will be lost
+git stash
+
+# update local copy from upstream (e.g. couchbase)
+git checkout $BASEREF
+git fetch $UPSTREAM
+git reset --hard $UPSTREAM/$BASEREF
+
+# force push to origin (e.g. my fork)
+if [ -n "$ORIGIN" ]; then
+  git push $ORIGIN $BASEREF --force
+fi
+
+if [ -n "$NEWBRANCH" ]
+then
+  git checkout -b $NEWBRANCH
+fi

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+find ~/couchbase -maxdepth 2 -name .git -execdir echo \; -execdir pwd \; -execdir git -c color.status=always status -bs \; | less

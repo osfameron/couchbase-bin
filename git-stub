@@ -1,0 +1,20 @@
+#!/bin/bash
+
+DIR=$(dirname $0)
+CMD=$1
+STUB=$DIR/$CMD
+
+if [ -e "$STUB" ]; then
+    echo OH NO, $STUB already exists. Exiting.
+    exit 1
+fi
+
+cat <<END_OF_STUB > $STUB
+#!/bin/bash
+
+source _git_helpers.sh
+
+$CMD
+END_OF_STUB
+
+chmod +x $STUB
