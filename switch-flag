@@ -1,0 +1,65 @@
+#!/bin/bash
+
+usage() {
+  echo "Usage:"
+  echo "   $(basename $0) [-p|x] [-c|r] {flagname} {path-to-adoc}"
+  echo
+  echo "   -p   Preview the changes only (default)"
+  echo "   -x   Execute the changes"
+  echo "   -c   Commit the flag (default)"
+  echo "   -r   Rollback the flag (back out the changes)"
+  echo
+  echo "Example:"
+  echo "   $(basename $0) flag-xxx modules/app-services/pages/index.adoc"
+  exit 1
+}
+
+# by default, we COMMIT the changes, but in PREVIEW mode
+REMOVE=ifndef
+PREVIEW=1
+
+while getopts 'crpxh' opt; do
+  case "$opt" in
+    c)
+      REMOVE=ifndef
+      ;;
+    r)
+      REMOVE=ifdef
+      ;;
+    p)
+      PREVIEW=1
+      ;;
+    x)
+      PREVIEW=
+      ;;
+      
+    ?|h)
+      usage
+      ;;
+  esac
+done
+shift "$(($OPTIND -1))"
+
+FLAG=$1
+ADOC=$2
+
+if [ -z "$ADOC" ]; then
+  usage
+fi
+
+
+TMP=`mktemp`.adoc
+
+cp $ADOC $TMP
+
+# remove ifndef::embargo-xxx up to the *closest* matching endif
+sd "^$REMOVE::$FLAG[\\s\\S]*?endif::$FLAG.*\\n?" '' $TMP
+
+# remove any remaining line that contains the flag embargo-xxx as macro argument
+sd "^.*::$FLAG\\[.*$\\n?" '' $TMP
+
+if [ "$PREVIEW" ]; then
+    delta $ADOC $TMP
+else
+    mv $TMP $ADOC
+fi

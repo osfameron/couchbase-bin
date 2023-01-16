@@ -1,0 +1,58 @@
+#!/bin/bash
+
+
+usage() {
+  echo "Usage:"
+  echo "   $(basename $0) [-l] [-p|x] [-c|r] {flagname}"
+  echo
+  echo "   -l   List the flags in this codebase (matching flag-xxx)"
+  echo
+  echo "   -p   Preview the changes only (default)"
+  echo "   -x   Execute the changes"
+  echo
+  echo "   -c   Commit the flag (default)"
+  echo "   -r   Rollback the flag (back out the changes)"
+  echo
+  echo "Example:"
+  echo "   $(basename $0) flag-xxx"
+  exit 1
+}
+
+list-flags() {
+  echo 'The following flags (flag-xxx) exist in this codebase:' > /dev/stderr
+  git grep 'endif::flag-.*\[' \
+    | cut -d: -f4 \
+    | cut -d\[ -f1 \
+    | sort \
+    | uniq -d
+  exit
+}
+
+ARGS=$*
+LIVEFLAG="$(dirname $0)/switch-flag"
+
+while getopts 'lcrpxh' opt; do
+  case "$opt" in
+    l)
+      list-flags
+      ;;
+    c|r|p|x)
+      # we don't need to parse these args, as we just pass them straight to liveflag.sh
+      ;;
+    ?|h)
+      usage
+      ;;
+  esac
+done
+shift "$(($OPTIND -1))"
+
+FLAG=$1
+
+if [ -z "$FLAG" ]; then
+  list-flags
+fi
+
+for FILE in $(git grep -l $FLAG);
+do
+    $LIVEFLAG $ARGS $FILE
+done
