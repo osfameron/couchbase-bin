@@ -1,0 +1,53 @@
+#!/usr/bin/env zx 
+
+$.verbose = false
+
+const split = (p) => p.split(path.sep)
+
+function upfind (from, target) {
+  const path_to_from = path.resolve(from)
+  
+  function _paths(acc, curr) {
+    const parsed = path.parse(curr)
+    const newacc = acc.concat([parsed.dir])
+    if (parsed.dir == parsed.root) { return newacc }
+    
+    return _paths(newacc, parsed.dir)
+  }
+  
+  const candidates = _paths([], path_to_from).map((dir) => path.join(dir, target))
+
+  return candidates.findLast(c => fs.existsSync(c))
+}
+
+const target = argv._[0]
+
+const antora_yml = upfind(target, 'antora.yml')
+
+const antora_config = YAML.parse(
+  fs.readFileSync(antora_yml, 'utf8'))
+
+const component = antora_config.name
+
+const antora_root = path.dirname(antora_yml)
+
+const path_to_target = split(path.relative(antora_root, target))
+
+function assert (assertion, description) {
+  if (! assertion) {
+    console.log("FAILURE of assertion", description)
+    process.exit(1)
+  }
+}
+
+assert(path_to_target[0] == 'modules', "Target must be in a /modules directory")
+
+const target_module = path_to_target[1]
+const target_module_normalised = target_module == 'ROOT' ? '' : target_module
+
+assert(path_to_target[2] == 'pages', "Target must bin in a /pages directory (partials aren't supported!)")
+
+const rest = path_to_target.slice(3).join(path.sep)
+
+console.log( `xref:${component}:${target_module_normalised}:${rest}[]` )
+
